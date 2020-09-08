@@ -5,12 +5,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
+
+    private final BookRepository bookRepository;
     @Autowired
-    private BookRepository bookRepository;
+    public BookController(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @GetMapping
     public Iterable findAll() {

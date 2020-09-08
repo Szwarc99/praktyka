@@ -21,6 +21,22 @@ public class Book {
     @Column(nullable = false)
     private String author;
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
