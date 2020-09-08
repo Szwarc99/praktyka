@@ -10,9 +10,18 @@ import javax.persistence.GenerationType;
 
 @Entity
 public class Car {
+
+    public Car(){
+
+    }
+    public Car(String marka)
+    {
+        this.id = id;
+        this.marka = marka;
+    }
+
     @javax.persistence.Id
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
     int id;
 
     @Column
