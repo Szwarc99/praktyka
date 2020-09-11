@@ -9,20 +9,23 @@ import java.util.Collection;
 @RestController
 public class VehicleController {
 
-    private final CarRepository carRepository;
-
+    @Autowired
     public VehicleController(CarRepository carRepository) {
         this.carRepository = carRepository;
+        this.carRepository.save(new Car(0,"BMW", "black"));
     }
+
+    private final CarRepository carRepository;
+
     @RequestMapping("/cars")
     Collection<Car> cars(){
        return (Collection<Car>) this.carRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/cars")
     @ResponseStatus(HttpStatus.CREATED)
     public Car create(@RequestBody Car car) {
-        return carRepository.save(car);
+        return  carRepository.save(car);
     }
 
 }

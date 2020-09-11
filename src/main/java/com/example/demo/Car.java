@@ -14,16 +14,45 @@ public class Car {
     public Car(){
 
     }
-    public Car(String marka)
-    {
-        this.id = id;
-        this.marka = marka;
-    }
 
     @javax.persistence.Id
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
 
     @Column
     private String marka;
+
+    @Column
+    private String color;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Car(int i, String marka, String color) {
+        this.id = i;
+        this.marka = marka;
+        this.color = color;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getMarka() {
+        return marka;
+    }
+
+    public void setMarka(String marka) {
+        this.marka = marka;
+    }
 }
