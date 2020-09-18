@@ -30,10 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/courses").permitAll()
                 .antMatchers(HttpMethod.POST, "/courses").hasRole("OPERATOR")
+                .antMatchers("/console/**").permitAll()
                 .and()
                 .formLogin().permitAll();
-
-
+                http.csrf().disable();
+                http.headers().frameOptions().disable();
     }
 }
 

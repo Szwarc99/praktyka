@@ -17,16 +17,19 @@ public class Track {
     @OneToMany
     private List<Stop> stops;
 
-    public List<Stop> sortList(List<Stop> stops) {
-        List<Stop> sortedByNum = stops;
-        for(int i =0; i<stops.size();i++) {
-            Stop stop = stops.get(i);
+    public Track() {
+
+    }
+
+    public List<Stop> sortList() {
+        List<Stop> sortedByNum = this.stops;
+        for(int i =0; i<this.stops.size();i++) {
+            Stop stop = this.stops.get(i);
             sortedByNum.set(stop.getNum(),stop);
         }
         return sortedByNum;
     }
-    public Track(Long id, String name, List<Stop> stops) {
-        this.id = id;
+    public Track(String name, List<Stop> stops) {
         this.name = name;
         this.stops = stops;
     }

@@ -1,13 +1,8 @@
 package com.example.pkp.entities;
 
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.Data;
 
 @Entity
@@ -20,8 +15,14 @@ public class City {
     private String name;
     @OneToMany
     @JoinColumn(name = "city_id")
-    private List<Stop>stopList;
+    private List<Stop> stopList;
 
+    public City() {
 
+    }
+
+    public City(String name) {
+        this.name = name;
+    }
 
 }

@@ -1,11 +1,11 @@
 package com.example.pkp.entities;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,16 +13,23 @@ import java.util.Map;
 @Entity
 public class Course {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    private Train train;
 
 
-    public Course(Track track, List<LocalDateTime> timeTable) {
-        for(int i =0;i<track.getStops().size();i++) {
-            track.sortList(track.getStops());
-            this.details.put( track.sortList(track.getStops()).get(i), timeTable.get(i));
+
+    public Course(Train train, List<LocalDateTime> timeTable) {
+        List<Stop> stops = train.getTrack().sortList();
+        details = new HashMap<Stop, LocalDateTime>();
+        for(int i =0;i<train.getTrack().getStops().size();i++) {
+
+            this.details.put( stops.get(i), timeTable.get(i));
         }
     }
+
    @ElementCollection
    private Map<Stop, LocalDateTime> details;
 
