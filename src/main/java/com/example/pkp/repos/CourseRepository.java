@@ -1,9 +1,10 @@
 package com.example.pkp.repos;
 
 import com.example.pkp.entities.Course;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.pkp.entities.Driver;
 import org.springframework.data.repository.CrudRepository;
 
-public interface CourseRepository extends CrudRepository<Course,Long> {
+import java.util.List;
 
+public interface CourseRepository extends CrudRepository<Course,Long> {
 }

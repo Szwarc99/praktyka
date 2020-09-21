@@ -1,30 +1,23 @@
 package com.example.pkp.entities;
 
-import lombok.Data;
+import com.sun.istack.NotNull;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
+
 
 @Data
-@Entity
-public class Train {
+@Entity @Getter @Setter @NoArgsConstructor
+public class Train implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull
     private String name;
 
-    @OneToOne
-    private Track track;
-
-    public Train(String name,Track track) {
-        this.name = name;
-        this.track = track;
-    }
-
-    @OneToMany
-    private List<Course> courses;
-
-    public Train() {
-
+    public Train(String name) {
+        this.setName(name);
     }
 }

@@ -1,28 +1,23 @@
 package com.example.pkp.entities;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 
-import lombok.Data;
+import com.sun.istack.NotNull;
+import lombok.*;
 
 @Entity
-@Data
-public class City {
+@Data @Getter @Setter @NoArgsConstructor
+public class City implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
     private String name;
-    @OneToMany
-    @JoinColumn(name = "city_id")
-    private List<Stop> stopList;
-
-    public City() {
-
-    }
 
     public City(String name) {
         this.name = name;
     }
-
 }
