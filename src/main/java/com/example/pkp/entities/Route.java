@@ -21,7 +21,7 @@ public class Route implements Serializable {
     private String name;
 
     @NotNull
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.PERSIST})
     private Map<Integer,City> cities;
 
     public Route(String name,Map<Integer,City> cities) {

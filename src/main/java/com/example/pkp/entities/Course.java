@@ -25,15 +25,15 @@ public class Course implements Serializable {
     private Long id;
 
     @NotNull
-    @OneToOne(cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     private Train train;
 
     @NotNull
-    @OneToOne(cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     private Route route;
 
     @NotNull
-    @OneToOne(cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     private Driver driver;
 
 
