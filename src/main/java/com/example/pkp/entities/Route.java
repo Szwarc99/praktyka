@@ -14,13 +14,14 @@ import java.util.Map;
 @Getter @Setter @NoArgsConstructor
 public class Route implements Serializable {
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotNull
     private String name;
 
     @NotNull
-    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @ManyToMany(cascade = {CascadeType.ALL})
     private Map<Integer,City> cities;
 
     public Route(String name,Map<Integer,City> cities) {

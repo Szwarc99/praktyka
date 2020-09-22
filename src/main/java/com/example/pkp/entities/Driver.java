@@ -17,6 +17,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Driver {
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     @NotNull

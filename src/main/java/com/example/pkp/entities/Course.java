@@ -9,9 +9,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+
 
 @Data
 @Entity @Getter
@@ -19,6 +20,7 @@ import java.util.Optional;
 @NoArgsConstructor
 public class Course implements Serializable {
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -37,28 +39,17 @@ public class Course implements Serializable {
 
    @NotNull
    @ElementCollection
-   private Map<City, LocalDateTime> details;
+   private Map<City, LocalDateTime> details = new HashMap<City, LocalDateTime>();
 
    public Course(Driver driver, Train train, Route route, List<LocalDateTime> timeTable) {
-       this.setDriver(driver);
-       this.setRoute(route);
-       this.setTrain(train);
-       Map<Integer,City> cities =this.getRoute().getCities();
+       setDriver(driver);
+       setRoute(route);
+       setTrain(train);
+       Map<Integer,City> cities =getRoute().getCities();
        for(int i =0;i<cities.size();i++) {
-           this.details.put(cities.get(i), timeTable.get(i));
+           details.put(cities.get(i), timeTable.get(i));
        }
-
-
-
    }
 
-   /*public Course(Driver byDriverName, Optional<Train> byId, Optional<Route> byId1, List<LocalDateTime> listOfDates) {
-        this.setDriver(driver);
-        this.setRoute(route);
-        this.setTrain(train);
-        Map<Integer,City> cities =this.getRoute().getCities();
-        for(int i =0;i<cities.size();i++) {
-            this.details.put(cities.get(i), listOfDates.get(i));
-        }
-    }*/
+
 }

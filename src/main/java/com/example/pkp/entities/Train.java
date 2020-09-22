@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Entity @Getter @Setter @NoArgsConstructor
 public class Train implements Serializable {
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

@@ -11,6 +11,7 @@ import lombok.*;
 @Data @Getter @Setter @NoArgsConstructor
 public class City implements Serializable {
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
