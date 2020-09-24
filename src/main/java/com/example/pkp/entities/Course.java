@@ -36,6 +36,10 @@ public class Course implements Serializable {
     @ManyToOne(cascade = {CascadeType.PERSIST})
     private Driver driver;
 
+    @ElementCollection
+    private List<LocalDateTime> timeTable;
+
+
 
    @NotNull
    @ElementCollection
@@ -45,6 +49,7 @@ public class Course implements Serializable {
        setDriver(driver);
        setRoute(route);
        setTrain(train);
+       setTimeTable(timeTable);
        Map<Integer,City> cities =getRoute().getCities();
        for(int i =0;i<cities.size();i++) {
            details.put(cities.get(i), timeTable.get(i));

@@ -112,16 +112,22 @@ public class CourseController {
         String[] stringDates= dates.split(";");
         LocalDate from = LocalDate.parse(stringDates[0]);
         LocalDate to = LocalDate.parse(stringDates[1]);
-        LocalDateTime from2 = from.atStartOfDay();
+        System.out.println(from);
         int p = Period.between(from,to).getDays();
         System.out.println(p);
 
-        for(int i = 0; i<allCourses.size();i++) {
-            for(int j =0;j<p;j++) {
-                boolean b = allCourses.get(j).getDetails().values().contains(from2.plusDays(new Long(j)));
+        for(Course it:allCourses) {
+            List<LocalDate> dateList = new ArrayList<LocalDate>();
+            for (int i = 0; i < it.getTimeTable().size(); i++) {
+                dateList.add(i, it.getTimeTable().get(i).toLocalDate());
+            }
+            for (int i = 0; i < dateList.size(); i++) {
+                LocalDate b = from.plusDays(i);
                 System.out.println(b);
-                if(b) {
-                courses.add(allCourses.get(i));
+                boolean check = b.equals(dateList.get(i));
+                System.out.println(check);
+                if(check) {
+                    courses.add(it);
                 }
             }
         }
