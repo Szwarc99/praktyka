@@ -10,5 +10,7 @@ import java.util.List;
 public interface RouteRepository extends CrudRepository<Route,Long> {
     Route findByName(String name);
     ArrayList<Route> findAll();
+    void deleteByName(String name);
 
+    boolean existsByName(String name);
 }

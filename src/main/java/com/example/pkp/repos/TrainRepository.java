@@ -5,4 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface TrainRepository extends CrudRepository <Train,Long> {
     Train findByName(String name);
+
+    boolean existsByName(String trainName);
+
+    void deleteByName(String trainName);
 }
